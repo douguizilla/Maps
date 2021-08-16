@@ -11,7 +11,9 @@ import com.odougle.maps.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
 
-    private val binding: ActivityMainBinding = ActivityMainBinding.inflate(layoutInflater)
+    private val binding: ActivityMainBinding by lazy {
+        ActivityMainBinding.inflate(layoutInflater)
+    }
 
     private val TAG: String = "MainActivity"
     private val ERROR_DIALOG_REQUEST: Int = 9001
