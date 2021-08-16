@@ -6,15 +6,18 @@ import android.util.Log
 import android.widget.Toast
 import com.google.android.gms.common.ConnectionResult
 import com.google.android.gms.common.GoogleApiAvailability
+import com.odougle.maps.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
+
+    private val binding: ActivityMainBinding = ActivityMainBinding.inflate(layoutInflater)
 
     private val TAG: String = "MainActivity"
     private val ERROR_DIALOG_REQUEST: Int = 9001
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(binding.root)
         if(isServicesOK()){
             init()
         }
