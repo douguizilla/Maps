@@ -1,5 +1,6 @@
 package com.odougle.maps
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -24,7 +25,10 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun init(){
-
+        binding.btnMap.setOnClickListener {
+            val intent = Intent(this@MainActivity, MapActivity::class.java)
+            startActivity(intent)
+        }
     }
 
     fun isServicesOK(): Boolean{
