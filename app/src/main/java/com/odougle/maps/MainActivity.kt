@@ -15,14 +15,22 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        if(isServicesOK()){
+            init()
+        }
     }
 
-    fun isServicesOK(){
+    private fun init(){
+
+    }
+
+    fun isServicesOK(): Boolean{
         Log.d(TAG,"isServicesOK: checking google services version")
         val available = GoogleApiAvailability.getInstance().isGooglePlayServicesAvailable(this@MainActivity)
         if(available == ConnectionResult.SUCCESS){
             //ok
             Log.d(TAG, "isServicesOK: Google Play Services is working")
+            return true
         }else if(GoogleApiAvailability.getInstance().isUserResolvableError(available)){
             //an error we can resolve it
             Log.d(TAG,"isServicesOK: an error occured but we can fix it")
@@ -31,6 +39,8 @@ class MainActivity : AppCompatActivity() {
         }else{
             Toast.makeText(this, "You can`t make map requests",Toast.LENGTH_SHORT).show()
         }
+
+        return false
     }
 
 }
