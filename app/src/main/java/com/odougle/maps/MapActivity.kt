@@ -7,6 +7,7 @@ import com.odougle.maps.databinding.ActivityMapBinding
 class MapActivity : AppCompatActivity() {
 
     private val binding: ActivityMapBinding = ActivityMapBinding.inflate(layoutInflater)
+    private val TAG: String = "MapActivity"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
