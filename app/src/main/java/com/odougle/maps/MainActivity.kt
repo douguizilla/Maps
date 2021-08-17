@@ -28,7 +28,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun init(){
         binding.btnMap.setOnClickListener {
-            val intent = Intent(this@MainActivity, MapActivity::class.java)
+            val intent = Intent(this@MainActivity, MapsActivity::class.java)
             startActivity(intent)
         }
     }
