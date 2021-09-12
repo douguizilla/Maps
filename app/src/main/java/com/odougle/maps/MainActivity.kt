@@ -21,32 +21,34 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
-        if(isServicesOK()){
+        if (isServicesOK()) {
             init()
         }
     }
 
-    private fun init(){
+    private fun init() {
         binding.btnMap.setOnClickListener {
             val intent = Intent(this@MainActivity, MapsActivity::class.java)
             startActivity(intent)
         }
     }
 
-    fun isServicesOK(): Boolean{
-        Log.d(TAG,"isServicesOK: checking google services version")
-        val available = GoogleApiAvailability.getInstance().isGooglePlayServicesAvailable(this@MainActivity)
-        if(available == ConnectionResult.SUCCESS){
+    fun isServicesOK(): Boolean {
+        Log.d(TAG, "isServicesOK: checking google services version")
+        val available =
+            GoogleApiAvailability.getInstance().isGooglePlayServicesAvailable(this@MainActivity)
+        if (available == ConnectionResult.SUCCESS) {
             //ok
             Log.d(TAG, "isServicesOK: Google Play Services is working")
             return true
-        }else if(GoogleApiAvailability.getInstance().isUserResolvableError(available)){
+        } else if (GoogleApiAvailability.getInstance().isUserResolvableError(available)) {
             //an error we can resolve it
-            Log.d(TAG,"isServicesOK: an error occured but we can fix it")
-            val dialog = GoogleApiAvailability.getInstance().getErrorDialog(this@MainActivity, available, ERROR_DIALOG_REQUEST)
+            Log.d(TAG, "isServicesOK: an error occured but we can fix it")
+            val dialog = GoogleApiAvailability.getInstance()
+                .getErrorDialog(this@MainActivity, available, ERROR_DIALOG_REQUEST)
             dialog.show()
-        }else{
-            Toast.makeText(this, "You can`t make map requests",Toast.LENGTH_SHORT).show()
+        } else {
+            Toast.makeText(this, "You can`t make map requests", Toast.LENGTH_SHORT).show()
         }
 
         return false
